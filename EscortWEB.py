@@ -23,7 +23,7 @@ def load_data():
     return df
 
 df = load_data()
-st.markdown("### 🎲 The Application")
+st.markdown("### 🎲 The Application 💾")
 st.markdown("This application is a Streamlit dashboard hosted on Heroku that can be used"
             "to explore the results from board game matches that I tracked over the last year.")
 st.markdown("**♟ General Statistics ♟**")
