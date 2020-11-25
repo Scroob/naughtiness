@@ -21,9 +21,11 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 def load_data():
     df = pd.read_csv('out.csv')
     return df
+### Проверка МаркДауна
+## Еще *одна* **проверка**
 
 df = load_data()
-st.markdown("### 🎲 The Application 💾")
+st.markdown("### 🎲 The Application 💾 💻")
 st.markdown("This application is a Streamlit dashboard hosted on Heroku that can be used"
             "to explore the results from board game matches that I tracked over the last year.")
 st.markdown("**♟ General Statistics ♟**")
@@ -41,7 +43,7 @@ def fit_model():
     return hgbr
 hgbr = fit_model()
 
-st.header('Сколько ты стоишь?')
+st.header('Сколько ты стоишь?💻')
 st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
 
 st.sidebar.header('Введи свои параметры')
