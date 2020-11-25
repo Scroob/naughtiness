@@ -8,64 +8,24 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
-
-# In[7]:
-
-
-df = pd.read_csv('out.csv')
-
-
-# In[5]:
-
-
-df.head()
-
-
-# In[15]:
-
-
-data = df[['Age', 'Boobs', 'Height', 'Size', 'Weight']]
-target = pd.DataFrame(df['Price_USD'])
-target.head()
-data.head()
-
-
-# In[19]:
-
-
-from sklearn.linear_model import LinearRegression , SGDRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import mean_squared_error
 
 from sklearn.experimental import enable_hist_gradient_boosting
-
 from sklearn.ensemble import HistGradientBoostingRegressor 
-from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, VotingRegressor
-from sklearn.inspection import permutation_importance
-from sklearn.tree import DecisionTreeRegressor 
 
-lr = LinearRegression()
+
+df = pd.read_csv('out.csv')
+data = df[['Age', 'Boobs', 'Height', 'Size', 'Weight']]
+target = pd.DataFrame(df['Price_USD'])
+
 hgbr = HistGradientBoostingRegressor()
-sgd = SGDRegressor(max_iter = 100000)
-dtr = DecisionTreeRegressor()
-rfr = RandomForestRegressor()
-abr = AdaBoostRegressor()
-
 x_train, x_test, y_train, y_test = train_test_split(data, target, random_state=42, test_size=0.33)
-
-
-# In[23]:
-
-
 hgbr.fit(x_train, y_train)
 
-
-# In[ ]:
-
-
-st.header('How much are you worth?')
-st.subheader('You can estimate your **cost in an escort** based on your parameters')
+st.header('Сколько ты стоишь?')
+st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
 
 st.sidebar.header('Введи свои параметры')
 age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
@@ -83,9 +43,9 @@ st.write(cost_slut)
 if cost_slut < 50:
     st.subheader('К сожалению, вы относитесь к категории "Дешевые шлюхи"')
     
-if cost_slut < 55 and cost_slut >= 50:
+if cost_slut < 100 and cost_slut >= 50:
     st.subheader('Не так уж и плохо, вы относитесь к категории "Средние шлюшки"')    
 
-if cost_slut >= 55:
+if cost_slut >= 100:
     st.subheader('Позравляем, вы относитесь к категории "Элитные эскортницы"')
 
