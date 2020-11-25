@@ -26,6 +26,9 @@ def load_data():
 ## Еще *одна* **проверка**
 '''
 df = load_data()
+
+
+    
 st.markdown("### 🎲 The Application 💾 💻")
 st.markdown("This application is a Streamlit dashboard hosted on Heroku that can be used"
             "to explore the results from board game matches that I tracked over the last year.")
@@ -46,6 +49,9 @@ hgbr = fit_model()
 
 st.header('Сколько ты стоишь?💻')
 st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
+
+
+
 
 st.sidebar.header('Введи свои параметры')
 age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
@@ -69,3 +75,12 @@ if cost_slut < 100 and cost_slut >= 50:
 if cost_slut >= 100:
     st.subheader('Позравляем, вы относитесь к категории "Элитные эскортницы"')
 
+    
+st.sidebar.title("Menu")
+app_mode = st.sidebar.selectbox("Please select a page", ["Homepage",
+                                                         "Data Exploration",
+                                                         "Some Statistics"])
+if app_mode == "Data Exploration":
+    pass
+if app_mode == "Some Statistics":
+    pass
