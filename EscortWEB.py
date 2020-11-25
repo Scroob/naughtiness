@@ -23,12 +23,23 @@ def load_data():
     return df
 
 df = load_data()
+st.markdown("### 🎲 The Application")
+st.markdown("This application is a Streamlit dashboard hosted on Heroku that can be used"
+            "to explore the results from board game matches that I tracked over the last year.")
+st.markdown("**♟ General Statistics ♟**")
+
+
 data = df[['Age', 'Boobs', 'Height', 'Size', 'Weight']]
 target = pd.DataFrame(df['Price_USD'])
 
 hgbr = HistGradientBoostingRegressor()
 x_train, x_test, y_train, y_test = train_test_split(data, target, random_state=42, test_size=0.33)
-hgbr.fit(x_train, y_train)
+
+@st.cache
+def fit_model():
+    hgbr.fit(x_train, y_train)
+    return hgbr
+hgbr = fit_model()
 
 st.header('Сколько ты стоишь?')
 st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
