@@ -16,7 +16,13 @@ from sklearn.experimental import enable_hist_gradient_boosting
 from sklearn.ensemble import HistGradientBoostingRegressor 
 
 
-df = pd.read_csv('out.csv')
+
+@st.cache
+def load_data():
+    df = pd.read_csv('out.csv')
+    return df
+
+df = load_data()
 data = df[['Age', 'Boobs', 'Height', 'Size', 'Weight']]
 target = pd.DataFrame(df['Price_USD'])
 
