@@ -21,7 +21,7 @@ def main():
     
 
 @st.cache
-def fit_model():
+def fit_model(x_train, y_train):
     hgbr.fit(x_train, y_train)
     return hgbr
 
