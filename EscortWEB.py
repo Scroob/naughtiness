@@ -28,7 +28,7 @@ def load_data():
 df = load_data()
 
 st.image("https://user-images.githubusercontent.com/61186465/100323397-bd473780-2fd6-11eb-8633-75e83392e691.jpg",
-             use_column_width=True)
+             use_column_width=False)
 st.markdown("### 🎲 The Application 💾 💻")
 st.markdown("This application is a Streamlit dashboard hosted on Heroku that can be used"
             "to explore the results from board game matches that I tracked over the last year.")
