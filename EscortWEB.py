@@ -35,7 +35,7 @@ def load_data():
     x_train, x_test, y_train, y_test = train_test_split(data, target, random_state=42, test_size=0.33)
     model = fit_model(x_train, y_train, model)
     return data, model
-
+@st.cache
 def load_homepage(model):
     
     st.header('Сколько ты стоишь?💻')
