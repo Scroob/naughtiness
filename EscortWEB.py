@@ -36,24 +36,7 @@ def load_data():
     model = fit_model(x_train, y_train, model)
     return data, model
 
-@st.cache
-def calc_cost(model):
-    st.sidebar.header('Введи свои параметры')
-    age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
-    boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
-    height = st.sidebar.slider('Рост, см', min_value=120, max_value=200, value=165, key='height')
-    size = st.sidebar.slider('Размер одежды',  min_value=38, max_value=56, value=42, step=2, key='size')
-    weight = st.sidebar.slider('Вес, кг', min_value=40, max_value=150, value=45, key='weight')
-    
-    slut = np.array([age, boobs, height, size, weight]).reshape((1,-1))
-    cost_slut = model.predict(slut)
-    return cost_slut
-
-    
-
-
-def load_homepage(model):
-    
+def load_homepage(cost_slut):
     
     st.header('Сколько ты стоишь?💻')
     st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
@@ -64,9 +47,6 @@ def load_homepage(model):
     st.markdown("**♟ Домашняя страница ♟**")
     
     
-    
-    cost_slut = calc_cost(model)
-
     st.subheader('Ваша стоимость в долларах')
     st.write(cost_slut)
 
@@ -83,11 +63,21 @@ def load_homepage(model):
     
 def create_layout(data, model):
 
+    st.sidebar.header('Введи свои параметры')
+    age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
+    boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
+    height = st.sidebar.slider('Рост, см', min_value=120, max_value=200, value=165, key='height')
+    size = st.sidebar.slider('Размер одежды',  min_value=38, max_value=56, value=42, step=2, key='size')
+    weight = st.sidebar.slider('Вес, кг', min_value=40, max_value=150, value=45, key='weight')
+    
+    slut = np.array([age, boobs, height, size, weight]).reshape((1,-1))
+    cost_slut = model.predict(slut)
+    
     st.sidebar.title("Menu")
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage", "Data Exploration"])
     
     if app_mode == 'Homepage':
-        load_homepage(model)  
+        load_homepage(cost_slut)  
         
     elif app_mode == 'Data Exploration':
         data_exploration.load_page(data)
