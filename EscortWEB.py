@@ -44,7 +44,7 @@ def load_homepage(slut, model):
     '''
 
     st.image("https://user-images.githubusercontent.com/61186465/100323397-bd473780-2fd6-11eb-8633-75e83392e691.jpg",
-                 use_column_width=False)
+                 use_column_width=True)
     st.markdown("### 🎲 Приложение 💾 💻")
     st.markdown("Веб-приложение для анализа датасета со шлюхами"
                 "Первая версия")
