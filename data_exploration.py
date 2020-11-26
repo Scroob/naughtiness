@@ -1,21 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[30]:
-
-
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 from sklearn.preprocessing import normalize, MinMaxScaler
-
-
-# In[11]:
-
-
-df = pd.read_csv('out.csv')
 
 def load_page(df):
     prepare_layout()
@@ -48,40 +39,5 @@ def some_plot(df):
     scaler = MinMaxScaler()
     boobs_avg_scaled = scaler.fit_transform((boobs_avg).reshape((-1,1)))
     
-    fig = px.scatter(x=ages, y=weight_avg,
-    size=boobs_avg_scaled, size_max=60)
+    fig = px.scatter(x=ages, y=weight_avg, size=boobs_avg_scaled, size_max=60)
     st.write(fig)
-
-    
-    
-
-
-# In[40]:
-
-
-
-
-
-# In[41]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
