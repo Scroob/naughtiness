@@ -66,7 +66,7 @@ def load_homepage(slut, model):
 
     
     
-def create_layout(data):
+def create_layout(data, model):
     
     st.header('Сколько ты стоишь?💻')
     st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
@@ -85,7 +85,7 @@ def create_layout(data):
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage", "Data Exploration"])
     
     if app_mode == 'Homepage':
-        load_homepage(slut)  
+        load_homepage(slut, model)  
         
     elif app_mode == 'Data Exploration':
         data_exploration.load_page(data)
