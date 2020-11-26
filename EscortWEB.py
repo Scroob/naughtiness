@@ -21,8 +21,8 @@ def main():
     
 
 @st.cache
-def fit_model(x_train, y_train):
-    hgbr.fit(x_train, y_train)
+def fit_model(x_train, y_train, model):
+    model.fit(x_train, y_train)
     return hgbr
 
 @st.cache
@@ -33,7 +33,7 @@ def load_data():
 
     hgbr = HistGradientBoostingRegressor()
     x_train, x_test, y_train, y_test = train_test_split(data, target, random_state=42, test_size=0.33)
-    hgbr = fit_model(x_train, y_train)
+    hgbr = fit_model(x_train, y_train, hgbr)
     return data
 
 def load_hommepage(slut):
