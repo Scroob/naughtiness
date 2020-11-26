@@ -16,7 +16,7 @@ import data_exploration
 
 def main():
     data, model = load_data()
-    slut = np.array([18, 1, 165, 42, 45]).reshape((1,-1))
+    # slut = np.array([18, 1, 165, 42, 45]).reshape((1,-1))
     create_layout(data, model)
     
 
@@ -36,17 +36,24 @@ def load_data():
     model = fit_model(x_train, y_train, model)
     return data, model
 
-def load_homepage(slut, model):
+def load_homepage(model):
     
     st.header('Сколько ты стоишь?💻')
     st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
     st.image("https://user-images.githubusercontent.com/61186465/100323397-bd473780-2fd6-11eb-8633-75e83392e691.jpg",
                  use_column_width=True)
    
-    st.markdown("Веб-приложение для анализа датасета со шлюхами"
-                "Первая версия")
+    st.markdown("Веб-приложение для анализа датасета со шлюхами")
     st.markdown("**♟ Домашняя страница ♟**")
     
+    st.sidebar.header('Введи свои параметры')
+    age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
+    boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
+    height = st.sidebar.slider('Рост, см', min_value=120, max_value=200, value=165, key='height')
+    size = st.sidebar.slider('Размер одежды',  min_value=38, max_value=56, value=42, step=2, key='size')
+    weight = st.sidebar.slider('Вес, кг', min_value=40, max_value=150, value=45, key='weight')
+
+    slut = np.array([age, boobs, height, size, weight]).reshape((1,-1))
     cost_slut = model.predict(slut)
 
     st.subheader('Ваша стоимость в долларах')
@@ -65,16 +72,6 @@ def load_homepage(slut, model):
     
 def create_layout(data, model):
 
-    st.sidebar.header('Введи свои параметры')
-    age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
-    boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
-    height = st.sidebar.slider('Рост, см', min_value=120, max_value=200, value=165, key='height')
-    size = st.sidebar.slider('Размер одежды',  min_value=38, max_value=56, value=42, step=2, key='size')
-    weight = st.sidebar.slider('Вес, кг', min_value=40, max_value=150, value=45, key='weight')
-
-    slut = np.array([age, boobs, height, size, weight]).reshape((1,-1))
-    
-    
     st.sidebar.title("Menu")
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage", "Data Exploration"])
     
