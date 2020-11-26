@@ -82,10 +82,12 @@ def create_layout(data):
     
     st.sidebar.title("Menu")
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage", "Data Exploration"])
+    
     if app_mode == 'Homepage':
-        load_homepage(slut)    
-     elif app_mode == 'Data Exploration':
-        data_exploration.load_page()
+        load_homepage(slut)  
+        
+    elif app_mode == 'Data Exploration':
+        data_exploration.load_page(data)
 
 if __name__ == "__main__":
     main()       
