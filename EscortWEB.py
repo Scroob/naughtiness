@@ -17,7 +17,6 @@ import data_exploration
 def main():
     data, model = load_data()
     slut = np.array([18, 1, 165, 42, 45]).reshape((1,-1))
-    load_homepage(slut, model)
     create_layout(data, model)
     
 
