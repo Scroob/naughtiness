@@ -21,13 +21,7 @@ def prepare_layout():
     ### Проверка МаркДауна
     ## Еще *одна* **проверка**
     '''
-    st.markdown("There are several things you see on this page:".format(SPACES))
-    st.markdown("{}🔹 On the **left** you can see how often games were played "
-                "in the last year of matches. ".format(SPACES))
-    st.markdown("{}🔹 You can see the **total amount** certain board games have been played. ".format(SPACES))
-    st.markdown("{}🔹 The longest **break** between board games. ".format(SPACES))
-    st.markdown("{}🔹 The **longest chain** of games played in days. ".format(SPACES))
-    st.markdown("{}🔹 The **day** most games have been played. ".format(SPACES))
+    st.markdown("На этой странице мы приводим предварительный анализ данных)
     st.write(" ")
 
 def some_plot(df):
