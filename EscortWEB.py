@@ -35,8 +35,25 @@ def load_data():
     x_train, x_test, y_train, y_test = train_test_split(data, target, random_state=42, test_size=0.33)
     model = fit_model(x_train, y_train, model)
     return data, model
+
+@st.cache
+def calc_cost(params):
+    st.sidebar.header('Введи свои параметры')
+    age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
+    boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
+    height = st.sidebar.slider('Рост, см', min_value=120, max_value=200, value=165, key='height')
+    size = st.sidebar.slider('Размер одежды',  min_value=38, max_value=56, value=42, step=2, key='size')
+    weight = st.sidebar.slider('Вес, кг', min_value=40, max_value=150, value=45, key='weight')
+    
+    slut = np.array([age, boobs, height, size, weight]).reshape((1,-1))
+    cost_slut = model.predict(slut)
+    return cost_slut
+
+    
+
 @st.cache
 def load_homepage(model):
+    
     
     st.header('Сколько ты стоишь?💻')
     st.subheader('Ты можешь оценить свою **часовую оплату** на основе своих параметров. ')
@@ -46,15 +63,9 @@ def load_homepage(model):
     st.markdown("Веб-приложение для анализа датасета со шлюхами")
     st.markdown("**♟ Домашняя страница ♟**")
     
-    st.sidebar.header('Введи свои параметры')
-    age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
-    boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
-    height = st.sidebar.slider('Рост, см', min_value=120, max_value=200, value=165, key='height')
-    size = st.sidebar.slider('Размер одежды',  min_value=38, max_value=56, value=42, step=2, key='size')
-    weight = st.sidebar.slider('Вес, кг', min_value=40, max_value=150, value=45, key='weight')
-
-    slut = np.array([age, boobs, height, size, weight]).reshape((1,-1))
-    cost_slut = model.predict(slut)
+    
+    
+    cost_slut = calc_cost()
 
     st.subheader('Ваша стоимость в долларах')
     st.write(cost_slut)
