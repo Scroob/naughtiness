@@ -37,7 +37,7 @@ def load_data():
     return data, model
 
 @st.cache
-def calc_cost():
+def calc_cost(model):
     st.sidebar.header('Введи свои параметры')
     age = st.sidebar.slider('Возвраст', min_value=18, max_value=50, value=18, step=1, key='age')
     boobs = st.sidebar.slider('Размер груди', min_value=1, max_value=7, value=1, step=1, key='boobs')
@@ -65,7 +65,7 @@ def load_homepage(model):
     
     
     
-    cost_slut = calc_cost()
+    cost_slut = calc_cost(model)
 
     st.subheader('Ваша стоимость в долларах')
     st.write(cost_slut)
