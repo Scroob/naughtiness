@@ -23,7 +23,7 @@ def main():
 @st.cache
 def fit_model(x_train, y_train, model):
     model.fit(x_train, y_train)
-    return hgbr
+    return model
 
 @st.cache
 def load_data():
