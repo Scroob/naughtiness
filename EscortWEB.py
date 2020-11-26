@@ -51,7 +51,7 @@ def calc_cost(params):
 
     
 
-@st.cache
+
 def load_homepage(model):
     
     
