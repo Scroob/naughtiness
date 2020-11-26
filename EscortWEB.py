@@ -76,7 +76,7 @@ def create_layout(data, model):
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage", "Data Exploration"])
     
     if app_mode == 'Homepage':
-        load_homepage(slut, model)  
+        load_homepage(model)  
         
     elif app_mode == 'Data Exploration':
         data_exploration.load_page(data)
