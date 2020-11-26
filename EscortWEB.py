@@ -16,7 +16,8 @@ import data_exploration
 
 def main():
     data = load_data()
-    load_homepage()
+    slut = np.array([18, 1, 165, 42, 45]).reshape((1,-1))
+    load_homepage(slut)
     create_layout(data)
     
 
@@ -36,7 +37,7 @@ def load_data():
     hgbr = fit_model(x_train, y_train, hgbr)
     return data
 
-def load_hommepage(slut):
+def load_homepage(slut):
     '''
     ### Проверка МаркДауна
     ## Еще *одна* **проверка**
