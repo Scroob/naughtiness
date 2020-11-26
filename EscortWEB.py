@@ -39,7 +39,7 @@ def load_data():
     hgbr = fit_model(x_train, y_train)
     return data
 
-def load_hommepage(slut)
+def load_hommepage(slut):
     '''
     ### Проверка МаркДауна
     ## Еще *одна* **проверка**
