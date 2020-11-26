@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -85,11 +82,10 @@ def create_layout(data):
     
     st.sidebar.title("Menu")
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage", "Data Exploration"])
-        if app_mode == 'Homepage':
-            load_homepage(slut)
-        elif app_mode == ""Data Exploration"":
-            data_exploration.load_page()
+    if app_mode == 'Homepage':
+        load_homepage(slut)    
+     elif app_mode == 'Data Exploration':
+        data_exploration.load_page()
 
-            
 if __name__ == "__main__":
     main()       
