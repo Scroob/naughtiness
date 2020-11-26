@@ -15,9 +15,9 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 import data_exploration
 
 def main():
-    data = load_data()
+    data, model = load_data()
     slut = np.array([18, 1, 165, 42, 45]).reshape((1,-1))
-    load_homepage(slut)
+    load_homepage(slut, model)
     create_layout(data)
     
 
@@ -32,12 +32,12 @@ def load_data():
     data = df[['Age', 'Boobs', 'Height', 'Size', 'Weight']]
     target = pd.DataFrame(df['Price_USD'])
 
-    hgbr = HistGradientBoostingRegressor()
+    model = HistGradientBoostingRegressor()
     x_train, x_test, y_train, y_test = train_test_split(data, target, random_state=42, test_size=0.33)
-    hgbr = fit_model(x_train, y_train, hgbr)
-    return data
+    model = fit_model(x_train, y_train, model)
+    return data, model
 
-def load_homepage(slut):
+def load_homepage(slut, model):
     '''
     ### Проверка МаркДауна
     ## Еще *одна* **проверка**
@@ -50,7 +50,7 @@ def load_homepage(slut):
                 "Первая версия")
     st.markdown("**♟ Домашняя страница ♟**")
     
-    cost_slut = hgbr.predict(slut)
+    cost_slut = model.predict(slut)
 
     st.subheader('Ваша стоимость в долларах')
     st.write(cost_slut)
